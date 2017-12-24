@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test app</title>
+</head>
+<body>
+<h1>Hello world</h1>
+
+<div>
+  <ul>
+    <li>{{ user.first_name }} {{ user.last_name }}</li>
+  </ul>
+</div>
+
+
+<div>
+  <ol>
+    {% for name in random_names %}
+      <li>{{ name }}</li>
+    {% endfor %}
+  </ol>
+</div>
+
+</body>
+</html>
