@@ -9,10 +9,25 @@
 
 <div>
   <ul>
-    <li>{{ user.first_name }} {{ user.last_name }}</li>
+    <li>{{ user }}</li>
   </ul>
 </div>
 
+<h2>Articles</h2>
+<div>
+  {% for article in articles %}
+    <p>
+      <strong>{{ article.title }}</strong>
+    </p>
+
+    <ul>
+      {% for tag in article.tags.all %}
+        <li>{{ tag.name }}</li>
+      {% endfor %}
+    </ul>
+    <i>{{ article.picture.image.url }}</i>
+  {% endfor %}
+</div>
 
 <div>
   <ol>
