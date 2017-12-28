@@ -1,11 +1,14 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 
-# Create your views here.
 from test_mvc.models import Article
 
 
+# Create your views here.
+
+
 def base_page(request):
-    # user = User.objects.last()
+    user = User.objects.last()
 
     context = {
         "articles": Article.objects.all(),
@@ -14,6 +17,6 @@ def base_page(request):
 
     return render(
         request=request,
-        template_name='base.html',
+        template_name='test/aaa.html',
         context=context
     )
