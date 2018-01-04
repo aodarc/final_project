@@ -1,10 +1,14 @@
 from django.shortcuts import render
 
-# Create your views here.
-def index(request):
-    # user = User.objects.last()
 
-    return render(request,'my_self.html')
+def hello_message(request):
+    return render(
+        request=request,
+        template_name = 'my_self.html',
+)
+# user = User.objects.last()
+
+
 
 
 
