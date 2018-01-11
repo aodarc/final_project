@@ -121,5 +121,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'dist'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "test_mvc/static"),
+    os.path.join(BASE_DIR, "project_static"),
 )
