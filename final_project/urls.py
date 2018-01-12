@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home$', MainPageView.as_view()),
     url(r'^forms$', TestFormsView.as_view()),
+    url(r'^form_map$', TestFormsView.as_view()),
     url(r'^$', views.base_page),
 ]
 

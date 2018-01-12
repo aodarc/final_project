@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
-
 from test_mvc.forms import LoginForm
+
 
 
 class MainPageView(TemplateView):
@@ -37,3 +37,4 @@ class TestFormsView(View):
             )
 
         return render(request, 'main_page/forms_example.html')
+

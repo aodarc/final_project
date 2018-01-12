@@ -1,14 +1,16 @@
 from django.db import models
 
+from core.models.abstract_models import BaseDjangoModel
+
 # Create your models here.
-class Tag(BaseDjangoModel):
+class TagM(BaseDjangoModel):
     name = models.CharField(max_length=32)
 
     def __str__(self):
         return self.name
 
 
-class Article(BaseDjangoModel):
+class ArticleM(BaseDjangoModel):
     title = models.CharField(
         max_length=255,
         null=False,
@@ -16,7 +18,7 @@ class Article(BaseDjangoModel):
     )
     body = models.TextField(
         max_length=4000,
-        verbose_name='Article body'
+        verbose_name='ArticleM body'
     )
 
     stars = models.FloatField(
@@ -26,7 +28,7 @@ class Article(BaseDjangoModel):
 
     picture = models.ForeignKey(to='Picture')
 
-    tags = models.ManyToManyField(to=Tag)
+    tags = models.ManyToManyField(to=TagM)
 
 
 class Picture(BaseDjangoModel):
