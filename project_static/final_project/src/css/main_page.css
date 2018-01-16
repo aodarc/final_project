@@ -1,0 +1,5 @@
+.main_img {
+    background: url("../../static_img/maxresdefault.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

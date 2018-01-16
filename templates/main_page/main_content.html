@@ -1,68 +1,118 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block header %}
   <title>{{ title }}</title>
+    <link href="{% static 'final_project/src/css/main_page.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block main %}
-  <div class="container">
+
     <header class="header clearfix">
       <nav>
         <ul class="nav nav-pills float-right">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#">Личаківський</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Сихівський</a>
           </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Шевченківський</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Франківський</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Залізничний</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Галицький</a>
+            </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="#">Зареєструватися</a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Увійти</a>
           </li>
         </ul>
       </nav>
-      <h3 class="text-muted">Кіт пупкін</h3>
+        <h3 class="text-muted">Lviv SmartCity</h3>
     </header>
 
     <main role="main">
 
-      <div class="jumbotron">
-        <h1 class="display-3">Jumbotron heading</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus
-          commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-      </div>
+        <div class="jumbotron main_img">
+            <h2 class="display-3"> Електронна черга в дитячі навчальні заклади м.Львів</h2>
+            <p>
+            <h3 class="lead">Багато батьків не раз стикалися з проблемою отримання місця
+                для своїх дітей в дитячому садку. Тепер для них створено можливість поставити свою дитину в чергу,
+                не виходячи з дому. Для цього необхідно зареєструватись на даному сайті.
+                Далі можна відслідковувати статус поданої заявки і стежити за просуванням черги.
+                Крім того, є можливість переглянути інформацію про нормативну наповнюваність,
+                про черги в дошкільні установи, дізнатися всю необхідну інформацію про всі дитячі
+                садки обраного регіону.</h3></p>
+
+        </div>
 
       <div class="row marketing">
         <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            <h4>Тут має бути фото</h4>
+            <p>ДНЗ №1 адреса</p>
+            <p>
+                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
-            fermentum.</p>
+                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+            </p>
 
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            <h4>Тут має бути фото</h4>
+            <p>ДНЗ №2 адреса</p>
+            <p>
+                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
+
+                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+            </p>
+
+            <h4>Тут має бути фото</h4>
+            <p>ДНЗ №3 адреса</p>
+            <p>
+                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
+
+                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+            </p>
         </div>
-
+          {##}
         <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            <h4>Тут має бути фото</h4>
+            <p>ДНЗ №4 адреса</p>
+            <p>
+                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
-            fermentum.</p>
+                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+            </p>
 
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            <h4>Тут має бути фото</h4>
+            <p>ДНЗ №5 адреса</p>
+            <p>
+                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
+
+                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+            </p>
+
+            <h4>Тут має бути фото</h4>
+            <p>ДНЗ №6 адреса</p>
+            <p>
+                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
+
+                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+            </p>
         </div>
       </div>
 
     </main>
 
     <footer class="footer">
-      <p>© Company 2017</p>
+        <p>© Lviv 2018</p>
     </footer>
 
-  </div> <!-- /container -->
+
 {% endblock %}
