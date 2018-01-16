@@ -18,15 +18,12 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from final_project.views import MainPageView, TestFormsView
-from test_mvc import views
+
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home$', MainPageView.as_view()),
-    url(r'^forms$', TestFormsView.as_view()),
-    url(r'^form_map$', TestFormsView.as_view()),
-    url(r'^$', views.base_page),
+
 ]
 
 if settings.DEBUG:
