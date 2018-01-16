@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class City(models.Model):
+class City(models.BaseDjangoModel):
     name=models.CharField(max_length=100)
     lan=models.FloatField(blank=True, null=True)
     lot = models.FloatField(blank=True, null=True)
@@ -11,14 +11,14 @@ class City(models.Model):
         return self.name
 
 
-class Country(models.Model):
+class Country(models.BaseDjangoModel):
     name = models.CharField(max_length=100)
     slug = models.CharField(max_length=4, blank=True)
 
     def __str__(self):
         return self.name
 
-class User(models.Model):
+class User(models.BaseDjangoModel):
     Last_name = models.CharField(max_length=100)
     age=models.IntegerField()
     phone = models.CharField(max_length=15)
