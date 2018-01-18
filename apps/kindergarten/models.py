@@ -4,7 +4,7 @@ from django.db import models
 from core.models.helpers import image_path
 
 
-class Kindergarden(models.Model):
+class Kindergarten(models.Model):
     name=models.CharField(max_length=200)
     image=models.ImageField(
         upload_to=image_path,
