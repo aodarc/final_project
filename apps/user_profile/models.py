@@ -54,26 +54,21 @@ class Child(models.Model):
         blank=False,
         verbose_name="Введіть ім'я",
     )
-
-
     lastname = models.CharField(
         max_length=40,
         blank=False,
         verbose_name="Введіть прізвище",
     )
-
     surename = models.CharField(
         max_length=20,
         blank=False,
         verbose_name="Введіть по-батькові",
     )
-
     dob = models.DateField(
         max_length=4,
         blank =False,
         verbose_name= "вік дитини",
     )
-
     sex = models.CharField(
         max_length=1,
         choices=SEX_CHOICES,

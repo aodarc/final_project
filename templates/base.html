@@ -1,17 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Jumbotron Template for Bootstrap</title>
+  {% block header %}
+  {% endblock %}
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{% static 'final_project/bootstrap/css/bootstrap.min.css' %}">
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'final_project/src/css/narrow-jumbotron.css' %}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
-  </head>
+</head>
+
+<body>
+
+{% block main %}
+{% endblock %}
+
+<script src="{% static 'final_project/jquery/jquery.slim.min.js' %}"></script>
+<script src="{% static 'final_project/popper/popper.min.js' %}"></script>
+<script src="{% static 'final_project/bootstrap/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>
