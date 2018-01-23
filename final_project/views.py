@@ -1,8 +1,4 @@
-from django.shortcuts import render
-from django.views import View
 from django.views.generic import TemplateView
-
-
 
 
 class MainPageView(TemplateView):
@@ -12,7 +8,5 @@ class MainPageView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         context['title'] = "Our main page"
-
         return context
-
 
