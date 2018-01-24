@@ -78,7 +78,6 @@ class Child(models.Model):
     parents = models.ForeignKey(
         to=User,
         related_name='children',
-        null=True
     )
     class Meta:
         verbose_name = 'Профіль користувача'
