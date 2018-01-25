@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from user_profile.views import (
+from apps.user_profile.views import (
     get_users_by_gender,
     UserProfileDetailView)
 

@@ -41,3 +41,44 @@ class UserProfile(models.Model):
         ordering = ('-id',)
         verbose_name = 'Профіль користувача'
         verbose_name_plural = 'Профілі користувачів'
+
+
+class Child(models.Model):
+    SEX_CHOICES = (
+        ('F', 'female'),
+        ('M', 'male')
+    )
+
+    firstname = models.CharField(
+        max_length=20,
+        blank=False,
+        verbose_name="Введіть ім'я",
+    )
+    lastname = models.CharField(
+        max_length=40,
+        blank=False,
+        verbose_name="Введіть прізвище",
+    )
+    surename = models.CharField(
+        max_length=20,
+        blank=False,
+        verbose_name="Введіть по-батькові",
+    )
+    dob = models.DateField(
+        max_length=4,
+        blank =False,
+        verbose_name= "вік дитини",
+    )
+    sex = models.CharField(
+        max_length=1,
+        choices=SEX_CHOICES,
+        blank=False,
+        verbose_name='Стать'
+    )
+    parents = models.ForeignKey(
+        to=User,
+        related_name='children',
+    )
+    class Meta:
+        verbose_name = 'Профіль користувача'
+        verbose_name_plural = 'Профілі користувачів'
