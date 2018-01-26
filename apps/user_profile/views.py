@@ -1,7 +1,9 @@
 # Create your views here.
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
+from django.views.generic.edit import FormView
 
 from apps.user_profile.models import UserProfile
 
@@ -29,3 +31,21 @@ def get_users_by_gender(request, gender):
         user.user.get_full_name()
     )
     return HttpResponse(res)
+
+
+class RegisterFormView(FormView):
+    form_class = UserCreationForm
+
+    # Ссылка, на которую будет перенаправляться пользователь в случае успешной регистрации.
+    # В данном случае указана ссылка на страницу входа для зарегистрированных пользователей.
+    success_url = "/login/"
+
+    # Шаблон, который будет использоваться при отображении представления.
+    template_name = "main_page/register.html"
+
+    def form_valid(self, form):
+        # Создаём пользователя, если данные в форму были введены корректно.
+        form.save()
+
+        # Вызываем метод базового класса
+        return super(RegisterFormView, self).form_valid(form)
