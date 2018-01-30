@@ -20,7 +20,10 @@ class UserProfile(models.Model):
         blank=False,
         verbose_name='Адреса'
     )
-    user = models.OneToOneField(to=User)
+    user = models.OneToOneField(
+        to=User,
+        related_name='profile'
+    )
     sex = models.CharField(
         max_length=1,
         choices=SEX_CHOICES,
@@ -49,17 +52,17 @@ class Child(models.Model):
         ('M', 'male')
     )
 
-    firstname = models.CharField(
+    first_name = models.CharField(
         max_length=20,
         blank=False,
         verbose_name="Введіть ім'я",
     )
-    lastname = models.CharField(
+    last_name = models.CharField(
         max_length=40,
         blank=False,
         verbose_name="Введіть прізвище",
     )
-    surename = models.CharField(
+    sure_name = models.CharField(
         max_length=20,
         blank=False,
         verbose_name="Введіть по-батькові",
@@ -78,7 +81,9 @@ class Child(models.Model):
     parents = models.ForeignKey(
         to=User,
         related_name='children',
+        on_delete=models.CASCADE
     )
+
     class Meta:
         verbose_name = 'Профіль користувача'
         verbose_name_plural = 'Профілі користувачів'
