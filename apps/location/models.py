@@ -27,18 +27,10 @@ class Address(models.Model):
 
 
 class District(models.Model):
-    DISTRICT_CHOICE = (
-        ('Шевченківський'),
-        ('Галицький'),
-        ('Франківський'),
-        ('Залізничний'),
-        ('Сихівський'),
-        ('Личаківський'),
-        )
+
 
     district = models.CharField(
-        max_length= 2,
-        choices=DISTRICT_CHOICE,
+        max_length= 22,
         blank=False,
         verbose_name='Район'
     )
