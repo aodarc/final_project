@@ -1,46 +1,35 @@
 # Create your models here.
 from django.db import models
-from apps.kindergarten.models import Kindergarten
 
 
-
-
-
-class Address(models.Model):
-    country = models.CharField(
-        unique= True,
-        max_length=255,
-        blank=False,
-        verbose_name='Країна'
+class Country(models.Model):
+    name = models.CharField(
+        max_length=40,
+        unique=True
     )
 
-    city = models.CharField(
-        unique= True,
-        max_length=122,
-        blank=False,
-        verbose_name='Місто'
+    def __str__(self):
+        return self.name
+
+
+class City(models.Model):
+    name = models.CharField(
+        max_length=40
     )
-    town = models.OneToOneField(to=Kindergarten)
-    class Meta:
-        ordering = ('-id',)
-        verbose_name = 'Місцезнаходження дитячого садка'
+    city = models.ForeignKey(
+        to=Country,
+        related_name='cities'
+    )
+
+    def __str__(self):
+        return self.name
 
 
 class District(models.Model):
+    name = models.CharField(
+        max_length=40,
+        unique=True,
+        null=False
+    )
 
-
-    district = models.CharField(
-        max_length= 22,
-        blank=False,
-        verbose_name='Район'
-    )
-    street = models.CharField(
-        max_length= 122,
-        blank=False,
-        verbose_name='Вулиця'
-    )
-    region = models.ForeignKey(
-        to = Address,
-        related_name='district'
-    )
 
