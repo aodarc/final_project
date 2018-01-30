@@ -19,12 +19,13 @@ class Kindergarten(models.Model):
     )
     street = models.CharField(
         max_length=40,
-        blank= False,
+        default='',
         verbose_name='Вулиця'
     )
     address = models.CharField(
         max_length=40,
         blank=False,
+        default='',
         verbose_name='номер будинку'
     )
 
