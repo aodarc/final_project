@@ -1,5 +1,6 @@
 # Create your views here.
 from django.contrib.auth.forms import UserCreationForm
+from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
@@ -35,8 +36,8 @@ def get_users_by_gender(request, gender):
 
 class RegisterFormView(FormView):
     form_class = UserCreationForm
-    success_url = "/login/"
     template_name = "main_page/register.html"
+    success_url = reverse_lazy('main')
 
     def form_valid(self, form):
         form.save()

@@ -24,8 +24,8 @@ from final_project.views import MainPageView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('apps.user_profile.urls')),
-    url(r'^register/$', RegisterFormView.as_view()),
-    url(r'^$', MainPageView.as_view())
+    url(r'^register/$', RegisterFormView.as_view(), name="register"),
+    url(r'^$', MainPageView.as_view(), name="main")
 ]
 
 if settings.DEBUG:
