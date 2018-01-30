@@ -8,5 +8,5 @@ class MainPageView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         context['title'] = "Our main page"
-
         return context
+
