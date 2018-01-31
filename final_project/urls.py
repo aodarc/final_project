@@ -18,12 +18,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from apps.user_profile.views import RegisterFormView
+from apps.kindergarten.views import Kindergartenview
 from final_project.views import MainPageView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('apps.user_profile.urls')),
+    url(r'^kindergarden/', include('apps.kindergarten.urls')),
     url(r'^register/$', RegisterFormView.as_view(), name="register"),
+    url(r'^kindergarden/$', Kindergartenview(), name="kindergarten_page"),
     url(r'^$', MainPageView.as_view(), name="main")
 ]
 
