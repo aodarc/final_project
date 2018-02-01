@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^users/', include('apps.user_profile.urls')),
     url(r'^kindergarden/', include('apps.kindergarten.urls')),
     url(r'^register/$', RegisterFormView.as_view(), name="register"),
-    url(r'^kindergarden/$', Kindergartenview(), name="kindergarten_page"),
     url(r'^$', MainPageView.as_view(), name="main")
 ]
 

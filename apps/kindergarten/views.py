@@ -1,14 +1,13 @@
-from django.views.generic import DetailView
+from django.views.generic import ListView
+
 
 from apps.kindergarten.models import Kindergarten
 
 
-class Kindergartenview(DetailView):
+class Kindergartenview(ListView):
     model= Kindergarten
     template_name = 'main_page/kindergarten_page.html'
+    context_object_name = 'kinder_list'
 
-
-    def get_context_object_name(self, name):
-        return self.name
 
 

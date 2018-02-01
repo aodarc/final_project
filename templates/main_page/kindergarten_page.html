@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-
 {% load static %}
+
+
 {% block header %}
     <title>Реєстрація</title>
     <link href="{% static 'final_project/src/css/main_page.css' %}" rel="stylesheet">
@@ -8,32 +9,14 @@
 
 {% block main %}
 
-    <header class="header clearfix">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/"><strong class="logo-skg"> </strong>Lviv SmartCity</a>
-    </header>
-    <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href={% static "final_project/bootstrap/css/bootstrap.min.css" %}>
-  <script src={%  static 'final_project/jquery/jquery.min.js'%}></script>
-  <script src={% static 'final_project/bootstrap/js/bootstrap.min.js'%}></script>
-</head>
-<body>
-
 <div class="container">
   <ul>
-    <li>ДНЗ№=1</li>
-    <li>ДНЗ№=2</li>
-    <li>ДНЗ№=3</li>
-    <li>ДНЗ№=4</li>
-    <li>ДНЗ№=5</li>
-    <li>ДНЗ№=6</li>
+    {% for x in kinder_list%}
+        <li>{{ x.name }}</li>
+    {%endfor%}
   </ul>
 </div>
 
-</body>
-
-    {#    </div>#}
-    {#    </div>#}
 
     <footer class="footer">
         <p>Lviv {% now "Y" %}</p>
