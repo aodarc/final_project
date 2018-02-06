@@ -9,4 +9,3 @@ class MainPageView(TemplateView):
 
         context['title'] = "Our main page"
         return context
-

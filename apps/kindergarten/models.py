@@ -1,6 +1,7 @@
 # Create your models here.
 from django.db import models
 
+from apps.location.models import District
 from core.models.helpers import image_path
 
 
@@ -12,9 +13,21 @@ class Kindergarten(models.Model):
         upload_to=image_path,
         blank=True
     )
-    # TODO replace it on FK to location model
-    district = models.CharField(max_length=50)
-    street = models.CharField(max_length=50)
+    # district = models.ForeignKey(
+    #     to=District,
+    #     related_name='kindergarten'
+    # )
+    street = models.CharField(
+        max_length=40,
+        default='',
+        verbose_name='Вулиця'
+    )
+    # address = models.CharField(
+    #     max_length=40,
+    #     blank=False,
+    #     default='',
+    #     verbose_name='номер будинку'
+    # )
 
     advantages = models.TextField()
     groups = models.ManyToManyField("Group")
@@ -31,3 +44,4 @@ class Group(models.Model):
 
     def __str__(self):
         return self.name
+

@@ -3,9 +3,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView
+from django.shortcuts import render
+from django.views.generic import DetailView, ListView
 from django.views.generic.edit import FormView
 
+from apps.kindergarten.models import (Kindergarten)
+from apps.user_profile.filters import UserFilter
 from apps.user_profile.models import UserProfile
 
 
@@ -42,3 +45,24 @@ class RegisterFormView(FormView):
     def form_valid(self, form):
         form.save()
         return super(RegisterFormView, self).form_valid(form)
+
+
+# class DistrictView(TemplateView):
+#     template_name = "main_page/district_1.html"
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#
+#         context['title'] = "District"
+#         return context
+
+
+class KindergartenView(ListView):
+    model = Kindergarten
+    template_name = 'main_page/district_1.html'
+    context_object_name = 'kinder_list'
+
+    def search_kinder(self, request):
+        kinder = Kindergarten.objects.all()
+        user_filter = UserFilter(request.GET, queryset=kinder)
+        return render(request, 'main_page/district_1.html', {'filter': user_filter})

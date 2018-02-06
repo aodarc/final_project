@@ -17,14 +17,16 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from apps.user_profile.views import RegisterFormView
+from apps.user_profile.views import RegisterFormView, KindergartenView
 from final_project.views import MainPageView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('apps.user_profile.urls')),
     url(r'^register/$', RegisterFormView.as_view(), name="register"),
-    url(r'^$', MainPageView.as_view(), name="main")
+    url(r'^$', MainPageView.as_view(), name="main"),
+    # url(r'^District/$', DistrictView.as_view(), name="District"),
+    url(r'^Kinder/$', KindergartenView.as_view(), name="Kinder"),
 ]
 
 if settings.DEBUG:
