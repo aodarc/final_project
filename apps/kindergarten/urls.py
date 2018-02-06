@@ -3,5 +3,5 @@ from apps.kindergarten.views import Kindergartenview
 
 
 urlpatterns = [
-    url(r'^$', Kindergartenview.as_view()),
+    url(r'^$', Kindergartenview.as_view(), name='kinder'),
     ]
