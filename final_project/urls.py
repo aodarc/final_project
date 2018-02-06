@@ -24,7 +24,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('apps.user_profile.urls')),
     url(r'^register/$', RegisterFormView.as_view(), name="register"),
-    url(r'^$', MainPageView.as_view(), name="main")
+    url(r'^$', MainPageView.as_view(), name="main"),
+    url(r'^kindergarten/', include('apps.kindergarten.urls')),
 ]
 
 if settings.DEBUG:
