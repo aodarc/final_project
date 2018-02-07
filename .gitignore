@@ -101,6 +101,7 @@ ENV/
 .mypy_cache/
 .idea/
 db.sqlite3
+mvenv
 
 /static/
 /dist/
