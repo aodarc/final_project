@@ -1,118 +1,125 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block header %}
-    <title>Головна</title>
-    <link href="{% static 'final_project/src/css/main_page.css' %}" rel="stylesheet">
+  <title>Головна</title>
+  <link href="{% static 'final_project/src/css/main_page.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block main %}
 
-    <header class="header clearfix">
-      <nav>
-        <ul class="nav nav-pills float-right">
+  <header class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills float-right">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Личаківський</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Сихівський</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Шевченківський</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Франківський</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Залізничний</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Галицький</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:8000/register/">Зареєструватися</a>
+        </li>
+        {% if request.user.is_authenticated %}
           <li class="nav-item">
-              <a class="nav-link" href="#">Личаківський</a>
+            <a class="nav-link" href="{% url 'my-logout' %}">Вийти</a>
           </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Сихівський</a>
-          </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Шевченківський</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Франківський</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Залізничний</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Галицький</a>
-            </li>
+        {% else %}
           <li class="nav-item">
-              <a class="nav-link" href="http://127.0.0.1:8000/register/">Зареєструватися</a>
+            <a class="nav-link" href="{% url 'my-login' %}">Увійти</a>
           </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Увійти</a>
-          </li>
-        </ul>
-      </nav>
-        <h3 class="text-muted">Lviv SmartCity</h3>
-    </header>
+        {% endif %}
 
-    <main role="main">
+      </ul>
+    </nav>
+    <h3 class="text-muted">Lviv SmartCity</h3>
+  </header>
 
-        <div class="jumbotron main_img">
-            <h2 class="display-3"> Електронна черга в дитячі навчальні заклади м.Львів</h2>
-            <p>
-            <h3 class="lead">Багато батьків не раз стикалися з проблемою отримання місця
-                для своїх дітей в дитячому садку. Тепер для них створено можливість поставити свою дитину в чергу,
-                не виходячи з дому. Для цього необхідно зареєструватись на даному сайті.
-                Далі можна відслідковувати статус поданої заявки і стежити за просуванням черги.
-                Крім того, є можливість переглянути інформацію про нормативну наповнюваність,
-                про черги в дошкільні установи, дізнатися всю необхідну інформацію про всі дитячі
-                садки обраного регіону.</h3></p>
+  <main role="main">
 
-        </div>
+    <div class="jumbotron main_img">
+      <h2 class="display-3"> Електронна черга в дитячі навчальні заклади м.Львів</h2>
+      <p>
+      <h3 class="lead">Багато батьків не раз стикалися з проблемою отримання місця
+        для своїх дітей в дитячому садку. Тепер для них створено можливість поставити свою дитину в чергу,
+        не виходячи з дому. Для цього необхідно зареєструватись на даному сайті.
+        Далі можна відслідковувати статус поданої заявки і стежити за просуванням черги.
+        Крім того, є можливість переглянути інформацію про нормативну наповнюваність,
+        про черги в дошкільні установи, дізнатися всю необхідну інформацію про всі дитячі
+        садки обраного регіону.</h3></p>
 
-      <div class="row marketing">
-        <div class="col-lg-6">
-            <h4>Тут має бути фото</h4>
-            <p>ДНЗ №1 адреса</p>
-            <p>
-                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
+    </div>
 
-                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
-            </p>
+    <div class="row marketing">
+      <div class="col-lg-6">
+        <h4>Тут має бути фото</h4>
+        <p>ДНЗ №1 адреса</p>
+        <p>
+          <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
 
-            <h4>Тут має бути фото</h4>
-            <p>ДНЗ №2 адреса</p>
-            <p>
-                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
+          <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+        </p>
 
-                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
-            </p>
+        <h4>Тут має бути фото</h4>
+        <p>ДНЗ №2 адреса</p>
+        <p>
+          <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
 
-            <h4>Тут має бути фото</h4>
-            <p>ДНЗ №3 адреса</p>
-            <p>
-                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
+          <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+        </p>
 
-                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
-            </p>
-        </div>
-          {##}
-        <div class="col-lg-6">
-            <h4>Тут має бути фото</h4>
-            <p>ДНЗ №4 адреса</p>
-            <p>
-                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
+        <h4>Тут має бути фото</h4>
+        <p>ДНЗ №3 адреса</p>
+        <p>
+          <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
 
-                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
-            </p>
-
-            <h4>Тут має бути фото</h4>
-            <p>ДНЗ №5 адреса</p>
-            <p>
-                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
-
-                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
-            </p>
-
-            <h4>Тут має бути фото</h4>
-            <p>ДНЗ №6 адреса</p>
-            <p>
-                <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
-
-                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
-            </p>
-        </div>
+          <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+        </p>
       </div>
+      {##}
+      <div class="col-lg-6">
+        <h4>Тут має бути фото</h4>
+        <p>ДНЗ №4 адреса</p>
+        <p>
+          <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
 
-    </main>
+          <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+        </p>
 
-    <footer class="footer">
-        <p>Lviv {% now "Y" %}</p>
-    </footer>
+        <h4>Тут має бути фото</h4>
+        <p>ДНЗ №5 адреса</p>
+        <p>
+          <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
+
+          <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+        </p>
+
+        <h4>Тут має бути фото</h4>
+        <p>ДНЗ №6 адреса</p>
+        <p>
+          <a class="btn btn-sm btn-success" href="#" role="button">Детальніше</a>
+
+          <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>Lviv {% now "Y" %}</p>
+  </footer>
 
 
 {% endblock %}

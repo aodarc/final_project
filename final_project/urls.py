@@ -16,14 +16,20 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.views import LogoutView
+from django.urls import reverse_lazy
 
 from apps.user_profile.views import RegisterFormView
-from final_project.views import MainPageView
+from final_project.views import MainPageView, my_login
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('apps.user_profile.urls')),
     url(r'^register/$', RegisterFormView.as_view(), name="register"),
+    url(r'^login/$', my_login, name="my-login"),
+    url(r'^logout/$', LogoutView.as_view(
+        next_page=reverse_lazy('main')),
+        name='my-logout'),
     url(r'^$', MainPageView.as_view(), name="main")
 ]
 
