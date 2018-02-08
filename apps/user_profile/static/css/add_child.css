@@ -1,29 +1,31 @@
 input {
-    border: 2px solid #555;
+    border: 1px solid #006400;
+    border-radius: 5px;
     width: 100%;
     display: block;
     height: 35px;
 }
 
-input[type=text] {
-    width: 100%;
+input[type=text],
+input[type=number] {
+    width: 80%;
     padding: 12px 20px;
-    margin: 8px 0;
 }
 
 textarea {
-    width: 100%;
+    width: 80%;
     height: 150px;
     padding: 12px 20px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
+    border: 2px solid #006700;
     border-radius: 4px;
     background-color: #f8f8f8;
     resize: none;
 }
 
 select {
-    width: 100%;
+    width: 80%;
+    border: .5px solid #006700;
 }
 
 img {
@@ -45,12 +47,13 @@ img {
     color: white;
     font-weight: bold;
     text-align: left;
-    margin: 4px 2px;
+    margin: 15px 2px;
     cursor: pointer;
     width: auto;
     text-align: center;
     font-size: 18px;
 }
+
 
 .modalDialog {
     position: fixed;
