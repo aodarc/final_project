@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
+    'g_recaptcha',
     'apps.location',
     'apps.kindergarten',
     'apps.user_profile',
@@ -123,3 +125,8 @@ STATIC_ROOT = 'dist'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "project_static"),
     )
+
+GOOGLE_RECAPTCHA_SITE_KEY = '6LcCDUUUAAAAAOngnskOkoKyVAtef62I6btV6093'  # Публичный ключ
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LcCDUUUAAAAAJGnMUIm5qW6VBRcnxigGVKPB7II'  # Секретный ключ
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -16,7 +16,9 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django_filters.views import FilterView
 
+from apps.user_profile.filters import KinderFilter
 from apps.user_profile.views import RegisterFormView
 from final_project.views import MainPageView
 
@@ -24,7 +26,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('apps.user_profile.urls')),
     url(r'^register/$', RegisterFormView.as_view(), name="register"),
-    url(r'^$', MainPageView.as_view(), name="main")
+    url(r'^$', MainPageView.as_view(), name="main"),
+    url(r'^search/$', FilterView.as_view(filterset_class=KinderFilter, template_name='main_page/district.html'),
+        name='searcher'),
 ]
 
 if settings.DEBUG:

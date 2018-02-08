@@ -3,10 +3,19 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 from django.views.generic import DetailView
 from django.views.generic.edit import FormView
 
+from apps.kindergarten.models import Kindergarten
+from apps.user_profile.filters import KinderFilter
 from apps.user_profile.models import UserProfile
+
+
+def kinder_list(request):
+    kinder = Kindergarten.objects.all()
+    filter = KinderFilter(request.GET, queryset=kinder)
+    return render(request, 'main_page/district.html', {'filter': filter})
 
 
 class UserProfileDetailView(DetailView):
@@ -34,6 +43,7 @@ def get_users_by_gender(request, gender):
     return HttpResponse(res)
 
 
+#
 class RegisterFormView(FormView):
     form_class = UserCreationForm
     template_name = "main_page/register.html"

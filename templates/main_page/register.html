@@ -99,21 +99,36 @@
 
             <div class="form-group">
                 <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="terms" data-error="Перед відправленням даних" required>
-                        Я не робот
-                    </label>
+                    {#                    <label>#}
+                    {#                        <input type="checkbox" id="terms" data-error="Перед відправленням даних" required>#}
+                    {#                        Я не робот#}
+                    {#                    </label>#}
                     <div class="help-block with-errors"></div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Відправити</button>
-            </div>
+
+                {#                <div class="form-group">#}
+                {##}
+                {#                <button type="submit" class="btn btn-primary">Відправити</button>#}
+                {#            </div>#}
+
+
+        </form>
+
+
         </form>
     </div>
-    {#    </div>#}
-    {#    </div>#}
+
+    {% block content %}
+        <form method="post">
+            {% csrf_token %}
+
+            <script src='https://www.google.com/recaptcha/api.js'></script>
+            <div class="g-recaptcha" data-sitekey="6LcCDUUUAAAAAOngnskOkoKyVAtef62I6btV6093"></div>
+
+            <button type="submit" class="btn btn-primary">Відправити</button>
+        </form>
+    {% endblock %}
 
     <footer class="footer">
         <p>Lviv {% now "Y" %}</p>

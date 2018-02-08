@@ -1,6 +1,8 @@
 from django.views.generic import TemplateView
 
 
+# 'GOOGLE_RECAPTCHA_SITE_KEY': settings.GOOGLE_RECAPTCHA_SITE_KEY,
+
 class MainPageView(TemplateView):
     template_name = 'main_page/main_content.html'
 
