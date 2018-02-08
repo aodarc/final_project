@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+    <title>Register Child</title>
+    <link rel="stylesheet" href="{% static 'css/add_child.css' %}" >
+{% endblock %}
+
+{% block main %}
+
+<img src="http://hakam.org.my/wp/wp-content/uploads/2015/05/preschool-children-playing-clip-art-i4.png" />
+
+<h1>Реєстрація в ДНЗ</h1>
+
+<form action='#openModal' method="post" class="tab"> {% csrf_token %}
+    <div>
+        <label for="last name">Прізвище дитини  </label>
+        <input id="last name" type="text" name="last name" required>
+    </div>
+    <div>
+        <label for="first name">Ім'я дитини </label>
+        <input id="first name" type="text" name="first name" required>
+    </div>
+    <div>
+        <label for="surname">По-батькові дитини </label>
+        <input id="surname" type="text" name="surname" required>
+    </div>
+
+    <div>
+        <label for="gender">Стать</label>
+        <select id="gender" name="gender">
+            <option value="">---</option>
+            <option value="1">Жіноча</option>
+            <option value="2">Чоловіча</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="birthday">Дата народження</label>
+        <input type="text" id="birthday" data-datepicker-source="childform-birthday"
+               data-datepicker-type="1" data-krajee-kvdatepicker="kvDatepicker_493f0995" required>
+    </div>
+
+   <div>
+       <label for="register_city">Місто реєстрації (прописка)</label>
+        <input  id="register_city" type="text" name="register_city" required>
+   </div>
+
+    <div>
+        <label for="register_street">Вулиця реєстрації (прописка)</label>
+        <input type="text" id="register_street" name="register_street" required>
+    </div>
+
+    <div>
+        <label  for="register_house">Будинок реєстрації (прописка)</label>
+        <input type="text" id="register_house" name="register_house" required>
+    </div>
+
+
+    <div>
+        <label for="register_appart_number">Номер квартири реєстрації (прописка)</label>
+        <input type="text" id="register_appart_number" name="register_appart_number" required>
+    </div>
+
+    <div>
+        <label for="doc_series">Серія свідоцтва про народження</label>
+        <input type="text" id="doc_series" name="doc_series" placeholder="A-AA" required>
+    </div>
+
+    <div>
+        <label for="doc_number">Номер документу</label>
+        <input type="text" id="doc_number" name="doc_number" placeholder="999999" required>
+    </div>
+
+
+    <div>
+        <label for="doc_info">Дані документу (ким, коли виданий)</label>
+        <p><textarea id="doc_info" name="doc_info" required ></textarea></p>
+    </div>
+
+
+
+    <h4>Пільги дитини</h4>
+    <div>
+        <label for="previlege">Назва пільги</label>
+        <select id="previlege" name="previlege">
+            <option value="">---</option>
+            <option value="1">Інваліди I-шої групи</option>
+            <option value="2">Учасник ліквідації наслідків катастрофи на Чорнобильській АЕС, потерпілих від екологічного та іншого стихійного лиха, аварій, катастроф</option>
+            <option value="3">Діти Військовослужбовців Збройних сил України, Національної гвардії учасників АТО</option>
+            <option value="4">Діти-інваліди, які не мають протипоказань до відвідування ДНЗ</option>
+            <option value="5">Діти внутрішньо переміщених</option>
+            <option value="6">Діти, які перебувають під опікою</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="previlege_series">Серія документа</label>
+        <input type="text" id="previlege_series" name="previlege_series">
+    </div>
+
+    <div>
+        <label for="previlege_number">Номер документа</label>
+        <input type="text" id="previlege_number" name="previlege_number">
+    </div>
+
+    <a href="#openModal"><input class='button' type="submit" value="Зареєструвати"/></a>
+    <div id="openModal" class="modalDialog">
+      <div>
+          <a href="#close" title="Закрыть" class="close">X</a>
+          <h2>Заявка успішно створена</h2>
+          <a href="#"><input class='button' type="submit" value="Перейти в пофіль користувача"/></a>
+      </div>
+    </div>
+</form>
+
+{% endblock %}

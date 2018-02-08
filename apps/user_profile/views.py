@@ -2,10 +2,11 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView
 from django.views.generic.edit import FormView
 
+from apps.user_profile.forms import RegisterChildForm
 from apps.user_profile.models import UserProfile
 
 
@@ -42,3 +43,18 @@ class RegisterFormView(FormView):
     def form_valid(self, form):
         form.save()
         return super(RegisterFormView, self).form_valid(form)
+
+
+
+
+def child_form(request):
+    if request.method == 'POST':
+        form = RegisterChildForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/success/')
+        return render (request, 'add_child.html', {'form' : form})
+    else:
+
+        form = RegisterChildForm()
+        return render(request, 'add_child.html', {'form' : form})
