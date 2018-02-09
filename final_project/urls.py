@@ -18,7 +18,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from apps.user_profile.views import RegisterFormView
-from apps.kindergarten.views import Kindergartenview
 from final_project.views import MainPageView
 
 urlpatterns = [
