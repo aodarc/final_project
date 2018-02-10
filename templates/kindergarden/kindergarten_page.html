@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+    {{ block.super }}
+        <link href="{% static 'final_project/src/css/kinder_list.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block main %}
+
+    <div class="navbar navbar-inverse bg-inverse">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand">Головна</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Список дитячих садків</h1>
+        <p class="lead text-muted"> Тут ви можете обрати дитячий садок який найбільше підходить до ваших вподобань, і щасливого вам дня. </p>
+      </div>
+    </section>
+
+    <div class="album text-muted">
+      <div class="container">
+          <div class="row">
+              {% for kinder in kinder_list%}
+                    <div class="card">
+                    <img src="{{ kinder.image.url }}" alt="kinder">
+                        <p class="card-text">
+                            Дитячий садок: {{ kinder.name }}<br>
+                            Район: {{ kinder.district.name}}<br>
+                            Вулиця: {{ kinder.street}}
+                        </p>
+                    </div>
+              {%endfor%}
+          </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+        <p>Lviv {% now "Y" %}</p>
+    </footer>
+
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="356" height="280" viewBox="0 0 356 280" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="18" style="font-weight:bold;font-size:18pt;font-family:Arial, Helvetica, Open Sans, sans-serif">356x280</text></svg></body>
+{% endblock %}
