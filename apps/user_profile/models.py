@@ -77,7 +77,7 @@ class Child(models.Model):
         blank=False,
         verbose_name="Введіть прізвище",
     )
-    surname = models.CharField(
+    sure_name = models.CharField(
         max_length=20,
         blank=False,
         verbose_name="Введіть по-батькові",
@@ -94,55 +94,68 @@ class Child(models.Model):
         verbose_name='Стать'
     )
 
-    city = models.ForeignKey( to=City, default='')
+    city = models.ForeignKey(
+        to=City,
+        null=True,
+        default=None,
+    )
+
 
 
 
     street = models.CharField(
         verbose_name='Вулиця',
         max_length=100,
-        default='',
+        null=True,
+        default=None,
     )
 
     house = models.PositiveIntegerField(
         verbose_name='Будинок',
-        default=0,
+        null=True,
+        default=None,
     )
 
     flat = models.PositiveIntegerField(
         verbose_name='Номер квартири',
-        default=0,
+        null=True,
+        default=None,
     )
 
     birth_sertificate_series = models.CharField(
         verbose_name='Серія свідотства про народження',
         max_length=100,
-        default='',
+        null=True,
+        default=None,
 
     )
 
     birth_sertificate_number = models.PositiveIntegerField(
         verbose_name='Номер свідотства',
-        default=0,
+        null=True,
+        default=None,
 
     )
 
     birth_sertificate = models.CharField(
         verbose_name="Дані документу",
         max_length=255,
-        default='',
+        null=True,
+        default=None,
 
     )
 
     privilege_series = models.CharField(
         verbose_name='Серія документа',
         max_length=100,
-        default=''
+        null=True,
+        default=None,
     )
 
     privilege_number = models.PositiveIntegerField(
         verbose_name='Номер документа',
-        default=0,
+        null=True,
+        default=None,
     )
 
     parents = models.ForeignKey(
