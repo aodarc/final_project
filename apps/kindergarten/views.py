@@ -1,4 +1,3 @@
-from apps.kindergarten.templates import *
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 
