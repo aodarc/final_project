@@ -2,7 +2,7 @@
   <nav>
     <ul class="nav nav-pills float-right">
       <li class="nav-item">
-          <a class="nav-link" href="search">Личаківський</a>
+          <a class="nav-link" href="{% url 'search' %}">Личаківський</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Сихівський</a>
@@ -20,7 +20,7 @@
         <a class="nav-link" href="#">Галицький</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="signup">Зареєструватися</a>
+          <a class="nav-link" href="{% url 'signup' %}">Зареєструватися</a>
       </li>
         {% if request.user.is_authenticated %}
             <li class="nav-item">
@@ -35,5 +35,5 @@
   </nav>
 
 
-    <a class="navbar-brand" href="http://127.0.0.1:8000/"><strong class="logo-skg"> EDU </strong>Lviv SmartCity</a>
+    <a class="navbar-brand" href="{% url 'main' %}"><strong class="logo-skg"> EDU </strong>Lviv SmartCity</a>
 </header>
