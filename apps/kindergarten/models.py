@@ -75,8 +75,7 @@ class QueueChildRelation(BaseDjangoModel):
         to=Child
     )
     queue = models.ForeignKey(
-        to=Queue,
-        unique=True
+        to=Queue
     )
 
     status = models.CharField(

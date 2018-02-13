@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+    <title>Kindergarten</title>
+    <link rel="stylesheet" href="{% static 'css/show_kindergarten.css' %}" >
+{% endblock %}
+
+
+{% block main %}
+
+<div class="example2">
+    <img src='http://www.freyarchitekten.com/wp-content/uploads/2017/02/Passivhauskindergarten_02.jpeg' class="example_beauty">
+  <div>
+    <h2>{{ object.name }}</h2>
+    <h6>{{ object.street }} , {{ object.address }}</h6>
+    <a href="{% url 'kindergarten' pk=object.id %}">
+      <input class="button24" type="submit" value="Подати заяву">
+    </a>
+  </div>
+</div>
+
+
+<h3>Переваги</h3>
+<div class="advantage">
+    <p>{{ object.advantages }}</p>
+</div>
+
+<h3>Групи</h3>
+<div class="container2">
+    {% for group in groups %}
+         <div class="{% cycle 'baby' 'small' 'middle' 'oldest' %} item"><h4>{{ group.name }}</h4> <br />
+         <p class="description">{{ group.description }}</p> </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
