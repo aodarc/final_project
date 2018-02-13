@@ -1,8 +1,11 @@
 from django.conf.urls import url
 
-from apps.kindergarten.views import KinderView, Kindergartenview
+from apps.kindergarten.views import (
+    KinderDetailView,
+    KindergartenListView
+)
 
 urlpatterns = [
-    url(r'^(?P<pk>[0-9]+)$', KinderView.as_view(), name='show-kindergarten'),
-    url(r'^$', Kindergartenview.as_view(), name='kinder'),
+    url(r'^(?P<pk>[0-9]+)/$', KinderDetailView.as_view(), name='kindergarten'),
+    url(r'^$', KindergartenListView.as_view(), name='kindergartens'),
 ]

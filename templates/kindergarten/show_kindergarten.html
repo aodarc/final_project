@@ -12,10 +12,13 @@
 
 <div class="example2">
     <img src='http://www.freyarchitekten.com/wp-content/uploads/2017/02/Passivhauskindergarten_02.jpeg' class="example_beauty">
-    <span> <h2>{{ object.name }}</h2>
-           <h6>{{ object.street }} , {{ object.address}}</h6>
-           <a href="http://127.0.0.1:8000/register_child/"> <input class="button24" type="submit" value="Подати заяву" ></a>
-    </span>
+  <div>
+    <h2>{{ object.name }}</h2>
+    <h6>{{ object.street }} , {{ object.address }}</h6>
+    <a href="{% url 'kindergarten' pk=object.id %}">
+      <input class="button24" type="submit" value="Подати заяву">
+    </a>
+  </div>
 </div>
 
 
