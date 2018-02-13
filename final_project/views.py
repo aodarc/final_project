@@ -1,3 +1,4 @@
+
 from django.views.generic import TemplateView
 
 
@@ -9,4 +10,5 @@ class MainPageView(TemplateView):
 
         context['title'] = "Our main page"
         return context
+
 

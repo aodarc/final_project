@@ -1,4 +1,6 @@
 # Create your models here.
+from __future__ import unicode_literals
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -100,3 +102,4 @@ class Child(models.Model):
     class Meta:
         verbose_name = 'Профіль користувача'
         verbose_name_plural = 'Профілі користувачів'
+

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
     'apps.location',
     'apps.kindergarten',
     'apps.user_profile',
@@ -62,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'django.core.context_processors.media',
             ],
         },
     },
@@ -117,9 +119,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
+
 STATIC_URL = '/static/'
 STATIC_ROOT = 'dist'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "project_static"),
     )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_REDIRECT_URL = 'main'

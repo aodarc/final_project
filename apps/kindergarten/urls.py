@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from apps.kindergarten.views import Kindergartenview
 
+from apps.kindergarten.views import KindergartenView
 
 urlpatterns = [
-    url(r'^$', Kindergartenview.as_view(), name='kinder'),
+    url(r'^$', KindergartenView.as_view(), name='kinder'),
     ]
