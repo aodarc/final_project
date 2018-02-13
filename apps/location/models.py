@@ -31,5 +31,8 @@ class District(models.Model):
         unique=True,
         null=False
     )
+    def __str__(self):
+        return self.name
+
 
 

@@ -6,6 +6,7 @@ from apps.kindergarten.models import (
 from apps.kindergarten.templates import *
 
 from django.views.generic.detail import DetailView
+from django.views.generic import ListView
 
 class KinderView(DetailView):
     template_name = 'show_kindergarten.html'
@@ -17,3 +18,10 @@ class KinderView(DetailView):
         context['groups'] = Group.objects.filter(kindergarten=self.object)
 
         return context
+
+
+class Kindergartenview(ListView):
+    model= Kindergarten
+    template_name = 'kindergarden/kindergarten_page.html'
+    context_object_name = 'kinder_list'
+    queryset = Kindergarten.objects.select_related('district').all()

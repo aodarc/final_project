@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 from core.models.helpers import image_path
+from . import constants
 
 
 class UserProfile(models.Model):
@@ -51,7 +52,19 @@ class Child(models.Model):
         ('F', 'female'),
         ('M', 'male')
     )
-
+    PRIVILEGE_CHOICES = (
+        (0, "---"),
+        (1, constants.INVALID_CHILD),
+        (1, constants.INVALID_CHILD_WITHOUT_CONTRAINDICATION),
+        (1, constants.MILITARY_CHILD),
+        (1, constants.ECO_CHILD),
+        (1, constants.ORPHANS_CHILD)
+    )
+    privilege = models.PositiveIntegerField(
+        default=0,
+        choices=PRIVILEGE_CHOICES,
+        verbose_name='Тип пільги дитини'
+    )
     first_name = models.CharField(
         max_length=20,
         blank=False,
