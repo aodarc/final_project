@@ -1,4 +1,5 @@
 # Create your views here.
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
@@ -46,7 +47,7 @@ class RegisterFormView(FormView):
 
 
 
-
+@login_required
 def child_form(request):
     if request.method == 'POST':
         form = RegisterChildForm(request.POST)
