@@ -2,122 +2,108 @@
 
 {% load static %}
 {% block header %}
-    <title>Реєстрація</title>
-    <link href="{% static 'final_project/src/css/main_page.css' %}" rel="stylesheet">
+  <title>Реєстрація</title>
+  <link href="{% static 'final_project/src/css/main_page.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block main %}
+  <div class="container">
+    <form data-toggle="validator" role="form" method="POST" action="{% url 'register' %}">
+      {% csrf_token %}
 
-    <header class="header clearfix">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/"><strong class="logo-skg"> </strong>Lviv SmartCity</a>
-    </header>
+      <div class="form-group">
+        <label for="inputName" class="control-label">Прізвище батька/матері</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Введіть Ваше прізвище" required>
+      </div>
 
-    <div class="container">
-        <form data-toggle="validator" role="form">
+      <div class="form-group field-signupform-gender required">
+        <label class="control-label" for="signupform-gender">Стать</label>
+        <select id="signupform-gender" class="form-control" name="SignupForm[gender]">
+          <option value="2">Жіноча</option>
+          <option value="1">Чоловіча</option>
+        </select>
+        <div class="help-block"></div>
+      </div>
 
-            <div class="form-group">
-                <label for="inputName" class="control-label">Прізвище батька/матері</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Введіть Ваше прізвище" required>
-            </div>
+      <div class="form-group">
+        <label for="inputEmail" class="control-label">Ваша електроа пошта</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Email"
+               data-error="Ви не правильо ввели Вашу пошту" required>
+        <div class="help-block with-errors"></div>
+      </div>
 
-            <div class="form-group field-signupform-gender required">
-                <label class="control-label" for="signupform-gender">Стать</label>
-                <select id="signupform-gender" class="form-control" name="SignupForm[gender]">
-                    <option value="2">Жіноча</option>
-                    <option value="1">Чоловіча</option>
-                </select>
-                <div class="help-block"></div>
-            </div>
+      <div class="form-group">
+        <label for="inputPassword" class="control-label">Введите пароль</label>
+        <div class="form-inline row">
+          <div class="form-group col-sm-6">
+            <input type="password" data-toggle="validator" data-minlength="6" class="form-control"
+                   id="inputPassword" required>
+          </div>
+          <div class="form-group col-sm-6">
+            <input type="password" class="form-control"
+                   id="inputPasswordConfirm" data-match="#inputPassword"
+                   data-match-error="Помилка! Паролі не співпадають!" placeholder="Повторіть пароль"
+                   required>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+      </div>
 
-            <div class="form-group">
-                <label for="inputEmail" class="control-label">Ваша електроа пошта</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email"
-                       data-error="Ви не правильо ввели Вашу пошту" required>
-                <div class="help-block with-errors"></div>
-            </div>
+      <div class="form-group field-signupform-phone1 required">
+        <label class="control-label" for="signupform-phone1">Мобльний телефон</label>
+        <input type="text" id="inputPassword" placeholder="(096)123-45-67" class="form-control"
+               name="SignupForm[phone1]">
+        <div class="help-block"></div>
+      </div>
 
-            <div class="form-group">
-                <label for="inputPassword" class="control-label">Введите пароль</label>
-                <div class="form-inline row">
-                    <div class="form-group col-sm-6">
-                        <input type="password" data-toggle="validator" data-minlength="6" class="form-control"
-                               id="inputPassword" placeholder="123456" required>
-                        <span class="help-block">Мінімум 6 значень</span>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <input type="password" class="form-control"
-                               id="inputPasswordConfirm" data-match="#inputPassword"
-                               data-match-error="Помилка! Паролі не співпадають!" placeholder="Повторіть пароль"
-                               required>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-            </div>
+      <div class="form-group field-signupform-register_city required">
+        <label class="control-label" for="signupform-register_city">Місто реєстрації (прописка)</label>
+        <input type="text" id="signupform-register_city" class="form-control" name="SignupForm[register_city]">
+        <div class="help-block"></div>
+      </div>
 
-            <div class="form-group field-signupform-phone1 required">
-                <label class="control-label" for="signupform-phone1">Мобльний телефон</label>
-                <input type="text" id="inputPassword" placeholder="(000)000-00-00" class="form-control"
-                       name="SignupForm[phone1]"
-                       data-plugin-inputmask="inputmask_c0cac279">
-                <div class="help-block"></div>
-            </div>
+      <div class="form-group field-signupform-register_street required">
+        <label class="control-label" for="signupform-register_street">Вулиця реєстрації (прописка)</label>
+        <input type="text" id="signupform-register_street" class="form-control"
+               name="SignupForm[register_street]">
+        <div class="help-block"></div>
+      </div>
 
-            <div class="form-group field-signupform-register_city required">
-                <label class="control-label" for="signupform-register_city">Місто реєстрації (прописка)</label>
-                <input type="text" id="signupform-register_city" class="form-control" name="SignupForm[register_city]">
-                <div class="help-block"></div>
-            </div>
+      <div class="form-group field-signupform-register_house required">
+        <label class="control-label" for="signupform-register_house">Будинок реєстрації (прописка)</label>
+        <input type="text" id="signupform-register_house" class="form-control"
+               name="SignupForm[register_house]">
+        <div class="help-block"></div>
+      </div>
 
-            <div class="form-group field-signupform-register_street required">
-                <label class="control-label" for="signupform-register_street">Вулиця реєстрації (прописка)</label>
-                <input type="text" id="signupform-register_street" class="form-control"
-                       name="SignupForm[register_street]">
-                <div class="help-block"></div>
-            </div>
+      <div class="form-group field-signupform-register_house_symbol">
+        <label class="control-label" for="signupform-register_house_symbol">Символ будинку </label>
+        <input type="text" id="signupform-register_house_symbol" class="form-control"
+               name="SignupForm[register_house_symbol]">
+        <div class="help-block"></div>
+      </div>
 
-            <div class="form-group field-signupform-register_house required">
-                <label class="control-label" for="signupform-register_house">Будинок реєстрації (прописка)</label>
-                <input type="text" id="signupform-register_house" class="form-control"
-                       name="SignupForm[register_house]">
-                <div class="help-block"></div>
-            </div>
+      <div class="form-group field-signupform-register_appart_number required">
+        <label class="control-label" for="signupform-register_appart_number">Номер квартири реєстрації
+          (прописка)</label>
+        <input type="text" id="signupform-register_appart_number" class="form-control"
+               name="SignupForm[register_appart_number]">
+        <div class="help-block"></div>
+      </div>
 
-            <div class="form-group field-signupform-register_house_symbol">
-                <label class="control-label" for="signupform-register_house_symbol">Символ будинку </label>
-                <input type="text" id="signupform-register_house_symbol" class="form-control"
-                       name="SignupForm[register_house_symbol]">
-                <div class="help-block"></div>
-            </div>
+      <div class="form-group">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="terms" data-error="Перед відправленням даних" required>
+            Я не робот
+          </label>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
 
-            <div class="form-group field-signupform-register_appart_number required">
-                <label class="control-label" for="signupform-register_appart_number">Номер квартири реєстрації
-                    (прописка)</label>
-                <input type="text" id="signupform-register_appart_number" class="form-control"
-                       name="SignupForm[register_appart_number]">
-                <div class="help-block"></div>
-            </div>
-
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="terms" data-error="Перед відправленням даних" required>
-                        Я не робот
-                    </label>
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Відправити</button>
-            </div>
-        </form>
-    </div>
-    {#    </div>#}
-    {#    </div>#}
-
-    <footer class="footer">
-        <p>Lviv {% now "Y" %}</p>
-    </footer>
-
-
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Відправити</button>
+      </div>
+    </form>
+  </div>
 {% endblock %}

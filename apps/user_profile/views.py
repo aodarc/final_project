@@ -2,38 +2,10 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic import DetailView
 from django.views.generic.edit import FormView
 
 from apps.user_profile.forms import RegisterChildForm
-from apps.user_profile.models import UserProfile
-
-
-class UserProfileDetailView(DetailView):
-    model = UserProfile
-    template_name = 'main_page/main_content.html'
-
-
-def get_user_profile(request, user_id=None):
-    user_profile = get_object_or_404(UserProfile, pk=user_id)
-
-    if user_profile:
-        res = "<h1 align='center'>{}</h1>".format(
-            user_profile.user.get_full_name()
-        )
-        return HttpResponse(res)
-    else:
-        return HttpResponse("<h1 align='center'>Not found</h1>")
-
-
-def get_users_by_gender(request, gender):
-    user = UserProfile.objects.filter(sex=gender).last()
-    res = "<h1 align='center'>{}</h1>".format(
-        user.user.get_full_name()
-    )
-    return HttpResponse(res)
 
 
 class RegisterFormView(FormView):

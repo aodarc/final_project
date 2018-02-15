@@ -100,9 +100,6 @@ class Child(models.Model):
         default=None,
     )
 
-
-
-
     street = models.CharField(
         verbose_name='Вулиця',
         max_length=100,
