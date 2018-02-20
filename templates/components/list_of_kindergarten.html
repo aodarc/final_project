@@ -1,0 +1,19 @@
+{% for kinder in kinder_list %}
+    <div class="col-6">
+
+        <div class="card">
+            <img src="{{ kinder.image.url }}" alt="kinder" height="300" width="300">
+            <p class="card-text">
+                Дитячий садок: {{ kinder.name }}<br>
+                Район: {{ kinder.district.name }}<br>
+                Вулиця: {{ kinder.street }}
+            </p>
+            <p>
+                <a class="btn btn-sm btn-success" href="{% url 'kindergarten' pk=kinder.id %}"
+                   role="button">Детальніше</a>
+
+                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+            </p>
+        </div>
+    </div>
+{% endfor %}
