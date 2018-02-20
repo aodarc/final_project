@@ -4,9 +4,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.edit import FormView
+from apps.location.models import City
+from apps.user_profile.models import Child
 
 from apps.user_profile.forms import RegisterChildForm
-
 
 class RegisterFormView(FormView):
     form_class = UserCreationForm
@@ -21,13 +22,14 @@ class RegisterFormView(FormView):
 
 @login_required
 def child_form(request):
+    cities = City.objects.all()
     if request.method == 'POST':
         form = RegisterChildForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/success/')
-        return render (request, 'add_child.html', {'form' : form})
+            return redirect('/user_profile/')
+        return render (request, 'add_child.html', {'form' : form, 'city_list': cities})
     else:
 
         form = RegisterChildForm()
-        return render(request, 'add_child.html', {'form' : form})
+        return render(request, 'add_child.html', {'form' : form, 'city_list': cities})
