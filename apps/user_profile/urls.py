@@ -8,5 +8,5 @@ from final_project.views import MainPageView
 urlpatterns = [
     url(r'^register/$', RegisterFormView.as_view(), name="register"),
     url(r'^$', MainPageView.as_view(), name="main"),
-    url(r'^register_child$', child_form),
+    url(r'^register_child/$', child_form, name='register_child'),
 ]
