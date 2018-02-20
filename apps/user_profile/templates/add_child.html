@@ -14,70 +14,75 @@
 
 <h1>Реєстрація в ДНЗ</h1>
 
-<form action='#openModal' method="post" class="tab"> {% csrf_token %}
+<form action='{% url 'register_child' %}' method="post" class="tab">
+    {% csrf_token %}
     <div class="form-group">
         <label for="last name" >Прізвище дитини</label>
-        <input id="last name" type="text" class="form-group" name="last name" required>
+        <input id="last name" type="text" class="form-group" name="last_name" required>
     </div>
     <div class="form-group">
         <label for="first name">Ім'я дитини</label>
-        <input id="first name" type="text" name="first name" required>
+        <input id="first name" type="text" name="first_name" required>
     </div>
     <div class="form-group">
         <label for="surname"  >По-батькові дитини </label>
-        <input id="surname" type="text" class="form-group" name="surname" required>
+        <input id="surname" type="text" class="form-group" name="sure_name" required>
     </div>
 
     <div class="form-group">
         <div><label for="gender">Стать</label></div>
-        <select id="gender" name="gender">
-            <option value="">---</option>
-            <option value="1">Жіноча</option>
-            <option value="2">Чоловіча</option>
+        <select id="gender" name="sex">
+            {% for s in form.sex %}
+                {{ s }}
+            {% endfor %}
         </select>
     </div>
 
     <div class="form-group">
         <label for="birthday">Дата народження</label>
-        <input type="text" id="birthday" data-datepicker-source="childform-birthday"
-               data-datepicker-type="1" data-krajee-kvdatepicker="kvDatepicker_493f0995" class="form-group" required>
+        <input id="birthday" type="date"  class="form-group" name="dob" required>
     </div>
 
    <div class="form-group">
        <label for="register_city">Місто реєстрації (прописка)</label>
-        <input  id="register_city" type="text" class="form-group" name="register_city" required>
+   <select id="gender" name="city">
+       <option value="1">---</option>
+        {% for city in city_list %}
+            <option value="2">{{ city.name }}</option>
+        {% endfor %}
+   </select>
    </div>
 
     <div class="form-group">
         <label for="register_street" >Вулиця реєстрації (прописка)</label>
-        <input type="text" id="register_street" class="form-group" name="register_street" required>
+        <input type="text" id="register_street" class="form-group" name="street" required>
     </div>
 
     <div class="form-group">
         <label  for="register_house" >Будинок реєстрації (прописка)</label>
-        <input type="number" id="register_house" class="form-group" name="register_house" required>
+        <input type="number" id="register_house" class="form-group" name="house" required>
     </div>
 
 
     <div class="form-group">
         <label for="register_appart_number">Номер квартири реєстрації (прописка)</label>
-        <input type="number" id="register_appart_number" class="form-group" name="register_appart_number" required>
+        <input type="number" id="register_appart_number" class="form-group" name="flat" required>
     </div>
 
     <div class="form-group">
         <label for="doc_series">Серія свідоцтва про народження</label>
-        <input type="text" id="doc_series" class="form-group" name="doc_series" placeholder="A-AA" required>
+        <input type="text" id="doc_series" class="form-group" name="birth_sertificate_series" placeholder="A-AA" required>
     </div>
 
     <div class="form-group">
         <label for="doc_number">Номер документу</label>
-        <input type="number" id="doc_number" class="form-group" name="doc_number" placeholder="999999" required>
+        <input type="number" id="doc_number" class="form-group" name="birth_sertificate_number" placeholder="999999" required>
     </div>
 
 
     <div class="form-group">
         <label for="doc_info">Дані документу (ким, коли виданий)</label>
-        <p><textarea id="doc_info" class="form-group" name="doc_info" required ></textarea></p>
+        <p><textarea id="doc_info" class="form-group" name="birth_sertificate" required ></textarea></p>
     </div>
 
 
