@@ -1,6 +1,6 @@
 {% for kinder in kinder_list %}
-    <div class="card">
-        <img src="{{ kinder.image.url }}" alt="kinder">
+    <div class="card" >
+        <img src="{{ kinder.image.url }}" alt="kinder" height="300" width="300">
         <p class="card-text">
             Дитячий садок: {{ kinder.name }}<br>
             Район: {{ kinder.district.name }}<br>
