@@ -1,9 +1,13 @@
 input {
     border: 1px solid #006400;
     border-radius: 5px;
-    width: 100%;
+
     display: block;
     height: 35px;
+}
+
+#birthday {
+    width: 80%;
 }
 
 input[type=text],
