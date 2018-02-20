@@ -64,6 +64,9 @@ class Queue(BaseDjangoModel):
         related_name='queues',
     )
 
+    def __str__(self):
+        return 'В {}(ку)'.format(self.kindergarten.name)
+
 
 class QueueChildRelation(BaseDjangoModel):
     STATUS_CHOICES = (
@@ -81,6 +84,7 @@ class QueueChildRelation(BaseDjangoModel):
     status = models.CharField(
         max_length=2,
         choices=STATUS_CHOICES,
+        default='W',
         verbose_name='Статус дитини в черзі'
     )
 
