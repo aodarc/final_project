@@ -25,6 +25,6 @@ class UserPageView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data()
-        context ['user_profile'] = User.objects.all()
+        context ['children'] = Child.objects.filter(parents=self.object)
 
         return context
