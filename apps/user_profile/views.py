@@ -1,11 +1,10 @@
 # Create your views here.
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import DetailView
 from django.views.generic.edit import FormView
 
-from apps.user_profile.models import UserProfile
+from apps.user_profile.models import UserProfile, Child
 
 
 class RegisterFormView(FormView):
@@ -21,7 +20,6 @@ class RegisterFormView(FormView):
 class UserPageView(DetailView):
     template_name = 'user_profile/user_page.html'
     model = UserProfile
-
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data()
