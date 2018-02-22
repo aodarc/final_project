@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class PetsonsQueueConfig(AppConfig):
-    name = 'petsons_queue'
+    name = 'apps.petsons_queue'

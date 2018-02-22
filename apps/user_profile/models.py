@@ -66,7 +66,6 @@ class Child(models.Model):
         choices=PRIVILEGE_CHOICES,
         verbose_name='Тип пільги дитини'
     )
-
     first_name = models.CharField(
         max_length=20,
         blank=False,
@@ -161,6 +160,15 @@ class Child(models.Model):
         on_delete=models.CASCADE
     )
 
+    def get_full_name(self):
+        return '{} {}'.format(self.first_name, self.last_name)
+
     class Meta:
-        verbose_name = 'Профіль дитини'
-        verbose_name_plural = 'Профілі дітей'
+        verbose_name = 'Дитина'
+        verbose_name_plural = 'Діти'
+
+    def __str__(self):
+        return 'Батьки:{} | {}'.format(
+            self.parents.id,
+            self.get_full_name()
+        )

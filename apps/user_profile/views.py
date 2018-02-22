@@ -2,9 +2,12 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect, render
+from django.views.generic import DetailView
 from django.views.generic.edit import FormView
 
 from apps.user_profile.forms import RegisterChildForm
+
+from apps.user_profile.models import UserProfile
 
 
 class RegisterFormView(FormView):
@@ -17,7 +20,18 @@ class RegisterFormView(FormView):
         return super(RegisterFormView, self).form_valid(form)
 
 
-# @login_required
+class UserPageView(DetailView):
+    template_name = 'user_profile/user_page.html'
+    model = UserProfile
+
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data()
+        context ['children'] = Child.objects.filter(parents=self.object)
+
+        return context
+
+
 def child_form(request):
     if request.method == 'POST':
         form = RegisterChildForm(request.user, request.POST)
