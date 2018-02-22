@@ -4,6 +4,7 @@ from django.db import models
 
 from core.models.helpers import image_path
 from . import constants
+from apps.location.models import City
 
 
 class UserProfile(models.Model):
@@ -37,6 +38,38 @@ class UserProfile(models.Model):
         unique=True,
         verbose_name='Номер телефону'
     )
+
+    city = models.ForeignKey(
+        to=City,
+        null=True,
+        default=None,
+    )
+
+    street = models.CharField(
+        verbose_name='Вулиця',
+        max_length=100,
+        null=True,
+        default=None,
+    )
+
+    house = models.PositiveIntegerField(
+        verbose_name='Будинок',
+        null=True,
+        default=None,
+    )
+
+    house_symbol = models.CharField(
+        verbose_name='Символ будинку',
+        max_length=2,
+        blank=True,
+    )
+
+    flat = models.PositiveIntegerField(
+        verbose_name='Номер квартири',
+        null=True,
+        default=None,
+    )
+
 
     def __str__(self):
         return self.user.get_full_name()

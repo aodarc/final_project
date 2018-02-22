@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block header %}
+    <title>User Profile Page</title>
+    <link href="{% static 'final_project/src/css/main_page.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <form  method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="inputName" class="control-label">Прізвище батька/матері</label>
+                <input type="text" class="form-control" id="inputName" value="{{object.user.first_name}}">
+            </div>
+
+            <div class="form-group field-signupform-gender required">
+                <label class="control-label" for="signupform-gender">Стать</label>
+                <input id="signupform-gender" class="form-control" name="SignupForm[gender]" value="{{object.get_sex_display}}">
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail" class="control-label">Ваша електронна пошта</label>
+                <input type="email" class="form-control" id="inputEmail" value="{{object.user.email}}">
+            </div>
+
+
+            <div class="form-group field-signupform-phone1 required">
+                <label class="control-label" for="signupform-phone1">Мобiльний телефон</label>
+                <input type="text" id="signupform-phone1" value="{{object.phone}}" class="form-control">
+            </div>
+
+            <div class="form-group field-signupform-register_city required">
+                <label class="control-label" for="signupform-register_city">Місто реєстрації (прописка)</label>
+                <input type="text" id="signupform-register_city" class="form-control" name="SignupForm[register_city]"
+                        value="{{object.city}}">
+            </div>
+
+            <div class="form-group field-signupform-register_street required">
+                <label class="control-label" for="signupform-register_street">Вулиця реєстрації (прописка)</label>
+                <input type="text" id="signupform-register_street" class="form-control"
+                       name="SignupForm[register_street]" value="{{object.street}}">
+            </div>
+
+            <div class="form-group field-signupform-register_house required">
+                <label class="control-label" for="signupform-register_house">Будинок реєстрації (прописка)</label>
+                <input type="text" id="signupform-register_house" class="form-control"
+                       name="SignupForm[register_house]" value="{{object.house}}">
+            </div>
+
+            <div class="form-group field-signupform-register_house_symbol">
+                <label class="control-label" for="signupform-register_house_symbol">Символ будинку </label>
+                <input type="text" id="signupform-register_house_symbol" class="form-control"
+                       name="SignupForm[register_house_symbol]" value="{{ object.house_symbol }}">
+            </div>
+
+            <div class="form-group field-signupform-register_appart_number required">
+                <label class="control-label" for="signupform-register_appart_number">Номер квартири реєстрації
+                    (прописка)</label>
+                <input type="text" id="signupform-register_appart_number" class="form-control"
+                       name="SignupForm[register_appart_number]" value="{{object.flat}}">
+            </div>
+
+            <div class="form-group">
+                <h3>Діти</h3>
+                <ul>
+                    {% for child in children %}
+                    <li>{{ child.first_name }}  {{ child.last_name }}</li>
+                    {% endfor %}
+                </ul>
+
+
+                <a href="http://127.0.0.1:8000/users/register_child/">
+                   <button type="submit" class="btn btn-primary">Додати дитину</button>
+                </a>
+
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Зберегти</button>
+            </div>
+
+
+        </form>
+    </div>
+
+{% endblock %}
+
+
+
