@@ -17,16 +17,6 @@ class RegisterFormView(FormView):
         return super(RegisterFormView, self).form_valid(form)
 
 
-class RegisterChildFormView(FormView):
-    form_class = UserCreationForm
-    template_name = "main_page/register.html"
-    success_url = reverse_lazy('main')
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-
-
 # @login_required
 def child_form(request):
     if request.method == 'POST':
