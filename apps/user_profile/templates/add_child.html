@@ -45,12 +45,7 @@
 
    <div class="form-group">
        <label for="register_city">Місто реєстрації (прописка)</label>
-   <select id="gender" name="city">
-       <option value="1">---</option>
-        {% for city in city_list %}
-            <option value="2">{{ city.name }}</option>
-        {% endfor %}
-   </select>
+     {{ form.city }}
    </div>
 
     <div class="form-group">
