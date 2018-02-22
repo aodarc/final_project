@@ -5,15 +5,19 @@
             <img src="{{ kinder.image.url }}" alt="kinder" height="300" width="300">
             <p class="card-text">
                 Дитячий садок: {{ kinder.name }}<br>
-                Район: {{ kinder.district.name }}<br>
                 Вулиця: {{ kinder.street }}
             </p>
             <p>
                 <a class="btn btn-sm btn-success" href="{% url 'kindergarten' pk=kinder.id %}"
                    role="button">Детальніше</a>
 
-                <a class="btn btn-sm btn-success" href="#" role="button">Подати заявку</a>
+                {% if request.user.is_authenticated %}
+                  <button type="button" class="btn btn-sm btn-success" onclick="register_child(1)">
+                    Подати заявку
+                  </button>
+                {% endif %}
             </p>
         </div>
     </div>
 {% endfor %}
+  {% include 'components/register_kid.html' %}

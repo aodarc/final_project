@@ -97,6 +97,15 @@ class Child(models.Model):
         on_delete=models.CASCADE
     )
 
+    def get_full_name(self):
+        return '{} {}'.format(self.first_name, self.last_name)
+
     class Meta:
-        verbose_name = 'Профіль користувача'
-        verbose_name_plural = 'Профілі користувачів'
+        verbose_name = 'Дитина'
+        verbose_name_plural = 'Діти'
+
+    def __str__(self):
+        return 'Батьки:{} | {}'.format(
+            self.parents.id,
+            self.get_full_name()
+        )
