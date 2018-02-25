@@ -86,13 +86,9 @@
     <div class="form-group">
         <div><label for="privilege">Назва пільги</label></div>
         <select id="privilege" name="privilege">
-            <option value="">---</option>
-            <option value="1">Інваліди I-шої групи</option>
-            <option value="2">Учасник ліквідації наслідків катастрофи на Чорнобильській АЕС, потерпілих від екологічного та іншого стихійного лиха, аварій, катастроф</option>
-            <option value="3">Діти Військовослужбовців Збройних сил України, Національної гвардії учасників АТО</option>
-            <option value="4">Діти-інваліди, які не мають протипоказань до відвідування ДНЗ</option>
-            <option value="5">Діти внутрішньо переміщених</option>
-            <option value="6">Діти, які перебувають під опікою</option>
+            {% for p in form.privilege %}
+                {{ p }}
+            {% endfor %}
         </select>
     </div>
 
