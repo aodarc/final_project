@@ -146,12 +146,14 @@ class Child(models.Model):
         max_length=100,
         null=True,
         default=None,
+        blank=True,
     )
 
     privilege_number = models.PositiveIntegerField(
         verbose_name='Номер документа',
         null=True,
         default=None,
+        blank=True,
     )
 
     parents = models.ForeignKey(
