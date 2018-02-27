@@ -1,31 +1,45 @@
 <header class="header clearfix">
-  <nav>
-    <ul class="nav nav-pills float-right">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Личаківський</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Сихівський</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Шевченківський</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Франківський</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Залізничний</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Галицький</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="http://127.0.0.1:8000/register/">Зареєструватися</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Увійти</a>
-      </li>
-    </ul>
+
+    <a class="navbar-brand" href="{% url 'main' %}"><strong class="logo-skg"> EDU </strong>Lviv SmartCity</a>
+
+    <nav>
+
+        <ul>
+
+            <div class="row">
+
+                {% for name in district_list %}
+
+                    <a class="nav-link" href="?name={{ name }}">{{ name }}</a>
+
+                {% endfor %}
+                {% if request.user.is_authenticated %}
+                    <a class="nav-item">
+                        <a class="nav-link" href="{% url 'user-page' %}">Особистий кабінет</a>
+
+                    </a>
+                {% else %}
+                    <a class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">Зареєструватися</a>
+                    </a>
+                {% endif %}
+
+
+
+                {% if request.user.is_authenticated %}
+                    <a class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Вийти</a>
+                    </a>
+                {% else %}
+                    <a class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Увійти</a>
+                    </a>
+                {% endif %}
+            </div>
+
+        </ul>
+
   </nav>
-  <h3 class="text-muted">Lviv SmartCity</h3>
+
+
 </header>

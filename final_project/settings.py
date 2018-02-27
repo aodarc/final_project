@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.urls import reverse_lazy
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -112,6 +114,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+LOGIN_REDIRECT_URL = reverse_lazy('main')
+LOGOUT_REDIRECT_URL = reverse_lazy('main')
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

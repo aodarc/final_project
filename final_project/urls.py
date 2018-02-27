@@ -16,17 +16,20 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
-from apps.user_profile.views import RegisterFormView
+from apps.user_profile.views import signup, UserPageView
 from final_project.views import MainPageView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^users/', include('apps.user_profile.urls')),
+    url(r'^users/', UserPageView.as_view(), name="user-page"),
     url(r'^kindergarten/', include('apps.kindergarten.urls')),
-    url(r'^register/$', RegisterFormView.as_view(), name="register"),
+    url(r'^signup/$', signup, name='signup'),
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^$', MainPageView.as_view(), name="main"),
-    url(r'^kindergarten/', include('apps.kindergarten.urls')),
+
 ]
 
 if settings.DEBUG:

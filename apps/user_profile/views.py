@@ -1,20 +1,10 @@
 # Create your views here.
-from django.contrib.auth.forms import UserCreationForm
-from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
 from django.views.generic import DetailView
-from django.views.generic.edit import FormView
 
+from apps.user_profile.forms import SignUpForm
 from apps.user_profile.models import UserProfile, Child
-
-
-class RegisterFormView(FormView):
-    form_class = UserCreationForm
-    template_name = "main_page/register.html"
-    success_url = reverse_lazy('main')
-
-    def form_valid(self, form):
-        form.save()
-        return super(RegisterFormView, self).form_valid(form)
 
 
 class UserPageView(DetailView):
@@ -26,3 +16,18 @@ class UserPageView(DetailView):
         context['children'] = Child.objects.filter(parents=self.object)
 
         return context
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+        return redirect('login')
+    else:
+        form = SignUpForm()
+    return render(request, 'main_page/signup.html', {'form': form})

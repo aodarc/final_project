@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
-from apps.kindergarten.models import Kindergarten
 
-from apps.user_profile.forms import RegisterChild
+from apps.kindergarten.models import Kindergarten
+from apps.location.models import District
 
 
 class MainPageView(TemplateView):
@@ -12,9 +12,7 @@ class MainPageView(TemplateView):
 
         context['title'] = "Our main page"
         context['kinder_list'] = Kindergarten.objects.all()
-
-        if self.request.user.is_authenticated():
-            context['modal_form'] = RegisterChild()
+        context['district_list'] = District.objects.all()
 
         return context
 

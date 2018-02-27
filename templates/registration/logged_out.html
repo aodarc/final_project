@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div class="container">
+        {% block title %}До зустрічі!{% endblock %}
+
+        {% block content %}
+            <p>Ви успішно вийшли із системи</p>
+            <p><a href="{% url 'login' %}">Увійти</a></p>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="container">
+        {#{% block title %}Login{% endblock %}#}
+
+        {% block content %}
+            <h2>Увійти</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Увійти</button>
+
+            </form>
+        {% endblock %}
+    </div>
+{% endblock %}
+
