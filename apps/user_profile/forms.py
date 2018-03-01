@@ -16,8 +16,6 @@ class RegisterChild(forms.Form):
         queryset=Child.objects.all(),
         required=True
     )
-from apps.user_profile.models import Child
-
 
 class RegisterChildForm(forms.ModelForm):
     class Meta:
