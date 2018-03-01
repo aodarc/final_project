@@ -1,7 +1,7 @@
 # Create your models here.
 from django.contrib.auth.models import User
 from django.db import models
-
+from django.utils.html import format_html
 from apps.location.models import City
 from core.models.helpers import image_path
 from . import constants
