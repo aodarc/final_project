@@ -39,6 +39,37 @@ class UserProfile(models.Model):
         verbose_name='Номер телефону'
     )
 
+    city = models.ForeignKey(
+        to=City,
+        null=True,
+        default=None,
+    )
+
+    street = models.CharField(
+        verbose_name='Вулиця',
+        max_length=100,
+        null=True,
+        default=None,
+    )
+
+    house = models.PositiveIntegerField(
+        verbose_name='Будинок',
+        null=True,
+        default=None,
+    )
+
+    house_symbol = models.CharField(
+        verbose_name='Символ будинку',
+        max_length=2,
+        blank=True,
+    )
+
+    flat = models.PositiveIntegerField(
+        verbose_name='Номер квартири',
+        null=True,
+        default=None,
+    )
+
     def __str__(self):
         return self.user.get_full_name()
 
@@ -69,7 +100,7 @@ class Child(models.Model):
     first_name = models.CharField(
         max_length=20,
         blank=False,
-        verbose_name="Введіть ім'я",
+       verbose_name="Введіть ім'я",
     )
     last_name = models.CharField(
         max_length=40,
