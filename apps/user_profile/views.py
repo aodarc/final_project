@@ -5,9 +5,10 @@ from django.shortcuts import redirect, render
 from django.views.generic import DetailView
 from django.views.generic.edit import FormView
 
-from apps.user_profile.forms import RegisterChildForm
 
-from apps.user_profile.models import UserProfile
+from apps.user_profile.forms import RegisterChildForm
+from apps.user_profile.models import UserProfile, Child
+
 
 
 class RegisterFormView(FormView):
@@ -24,10 +25,9 @@ class UserPageView(DetailView):
     template_name = 'user_profile/user_page.html'
     model = UserProfile
 
-
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data()
-        context ['children'] = Child.objects.filter(parents=self.object)
+        context['children'] = Child.objects.filter(parents=self.object)
 
         return context
 
