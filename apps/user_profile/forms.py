@@ -23,6 +23,3 @@ class RegisterChildForm(forms.ModelForm):
     class Meta:
         model = Child
         fields = '__all__'
-
-    def __init__(self, user=None, *args, **kwargs):
-        super().__init__(*args, **kwargs)
