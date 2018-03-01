@@ -34,10 +34,12 @@ class UserPageView(DetailView):
 
 def child_form(request):
     if request.method == 'POST':
-        form = RegisterChildForm(request.user, request.POST)
+        data = request.POST.copy()
+        data['parents'] = request.user.id
+        form = RegisterChildForm(data)
         if form.is_valid():
             form.save()
-            return redirect('/user_profile/')
+            return redirect(reverse('register_child'))
         return render(request, 'add_child.html', {'form': form})
     else:
         form = RegisterChildForm(user=request.user)
