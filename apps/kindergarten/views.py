@@ -46,3 +46,4 @@ class RegisterKidView(View):
             q_c.save()
 
         return HttpResponseRedirect(reverse('main'))
+
