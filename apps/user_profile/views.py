@@ -42,5 +42,5 @@ def child_form(request):
             return redirect(reverse('register_child'))
         return render(request, 'add_child.html', {'form': form})
     else:
-        form = RegisterChildForm(user=request.user)
+        form = RegisterChildForm()
         return render(request, 'add_child.html', {'form': form})
