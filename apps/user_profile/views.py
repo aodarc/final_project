@@ -1,10 +1,14 @@
 # Create your views here.
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
+from django.shortcuts import redirect, render
 from django.views.generic import DetailView
 from django.views.generic.edit import FormView
 
+
+from apps.user_profile.forms import RegisterChildForm
 from apps.user_profile.models import UserProfile, Child
+
 
 
 class RegisterFormView(FormView):
@@ -26,3 +30,17 @@ class UserPageView(DetailView):
         context['children'] = Child.objects.filter(parents=self.object)
 
         return context
+
+
+def child_form(request):
+    if request.method == 'POST':
+        data = request.POST.copy()
+        data['parents'] = request.user.id
+        form = RegisterChildForm(data)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('register_child'))
+        return render(request, 'add_child.html', {'form': form})
+    else:
+        form = RegisterChildForm()
+        return render(request, 'add_child.html', {'form': form})

@@ -1,0 +1,117 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+{% block header %}
+    {{block.super}}
+    <title>Register Child</title>
+    <link rel="stylesheet" href="{% static 'css/add_child.css' %}" >
+{% endblock %}
+
+{% block main %}
+
+<img src="http://hakam.org.my/wp/wp-content/uploads/2015/05/preschool-children-playing-clip-art-i4.png" />
+
+<h1>Реєстрація в ДНЗ</h1>
+
+<form action='{% url 'register_child' %}' method="post" class="tab">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="last name" >Прізвище дитини</label>
+        <input id="last name" type="text" class="form-group" name="last_name" required>
+    </div>
+    <div class="form-group">
+        <label for="first name">Ім'я дитини</label>
+        <input id="first name" type="text" name="first_name" required>
+    </div>
+    <div class="form-group">
+        <label for="surname"  >По-батькові дитини </label>
+        <input id="surname" type="text" class="form-group" name="sure_name" required>
+    </div>
+
+    <div class="form-group">
+        <div><label for="gender">Стать</label></div>
+        <select id="gender" name="sex">
+            {% for s in form.sex %}
+                {{ s }}
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="birthday">Дата народження</label>
+        <input id="birthday" type="date"  class="form-group" name="dob" required>
+    </div>
+
+   <div class="form-group">
+       <label for="register_city">Місто реєстрації (прописка)</label>
+     {{ form.city }}
+   </div>
+
+    <div class="form-group">
+        <label for="register_street" >Вулиця реєстрації (прописка)</label>
+        <input type="text" id="register_street" class="form-group" name="street" required>
+    </div>
+
+    <div class="form-group">
+        <label  for="register_house" >Будинок реєстрації (прописка)</label>
+        <input type="number" id="register_house" class="form-group" name="house" required>
+    </div>
+
+
+    <div class="form-group">
+        <label for="register_appart_number">Номер квартири реєстрації (прописка)</label>
+        <input type="number" id="register_appart_number" class="form-group" name="flat" required>
+    </div>
+
+    <div class="form-group">
+        <label for="doc_series">Серія свідоцтва про народження</label>
+        <input type="text" id="doc_series" class="form-group" name="birth_sertificate_series" placeholder="A-AA" required>
+    </div>
+
+    <div class="form-group">
+        <label for="doc_number">Номер документу</label>
+        <input type="number" id="doc_number" class="form-group" name="birth_sertificate_number" placeholder="999999" required>
+    </div>
+
+
+    <div class="form-group">
+        <label for="doc_info">Дані документу (ким, коли виданий)</label>
+        <p><textarea id="doc_info" class="form-group" name="birth_sertificate" required ></textarea></p>
+    </div>
+
+
+
+    <h4>Пільги дитини</h4>
+    <div class="form-group">
+        <div><label for="privilege">Назва пільги</label></div>
+        <select id="privilege" name="privilege">
+            {% for p in form.privilege %}
+                {{ p }}
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="privilege_series">Серія документа</label>
+        <input type="text" id="privilege_series" name="privilege_series">
+    </div>
+
+    <div>
+        <label for="privilege_number">Номер документа</label>
+        <input type="number" id="privilege_number" name="privilege_number">
+    </div>
+
+    <a href="#openModal"><input class='button' type="submit" value="Зареєструвати"/></a>
+
+
+    <div id="openModal" class="modalDialog">
+      <div>
+          <a href="#close" title="Закрыть" class="close">X</a>
+          <h2>Заявка успішно створена</h2>
+          <a href="#"><input class='button' type="submit" value="Перейти в пофіль користувача"/></a>
+      </div>
+    </div>
+</form>
+
+{% endblock %}

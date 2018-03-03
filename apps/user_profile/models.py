@@ -1,10 +1,10 @@
 # Create your models here.
 from django.contrib.auth.models import User
 from django.db import models
-
+from django.utils.html import format_html
+from apps.location.models import City
 from core.models.helpers import image_path
 from . import constants
-from apps.location.models import City
 
 
 class UserProfile(models.Model):
@@ -70,7 +70,6 @@ class UserProfile(models.Model):
         default=None,
     )
 
-
     def __str__(self):
         return self.user.get_full_name()
 
@@ -101,7 +100,7 @@ class Child(models.Model):
     first_name = models.CharField(
         max_length=20,
         blank=False,
-        verbose_name="Введіть ім'я",
+       verbose_name="Введіть ім'я",
     )
     last_name = models.CharField(
         max_length=40,
@@ -124,6 +123,70 @@ class Child(models.Model):
         blank=False,
         verbose_name='Стать'
     )
+
+    city = models.ForeignKey(
+        to=City,
+        null=True,
+        default=None,
+    )
+
+    street = models.CharField(
+        verbose_name='Вулиця',
+        max_length=100,
+        null=True,
+        default=None,
+    )
+
+    house = models.PositiveIntegerField(
+        verbose_name='Будинок',
+        null=True,
+        default=None,
+    )
+
+    flat = models.PositiveIntegerField(
+        verbose_name='Номер квартири',
+        null=True,
+        default=None,
+    )
+
+    birth_sertificate_series = models.CharField(
+        verbose_name='Серія свідотства про народження',
+        max_length=100,
+        null=True,
+        default=None,
+
+    )
+
+    birth_sertificate_number = models.PositiveIntegerField(
+        verbose_name='Номер свідотства',
+        null=True,
+        default=None,
+
+    )
+
+    birth_sertificate = models.CharField(
+        verbose_name="Дані документу",
+        max_length=255,
+        null=True,
+        default=None,
+
+    )
+
+    privilege_series = models.CharField(
+        verbose_name='Серія документа',
+        max_length=100,
+        null=True,
+        default=None,
+        blank=True,
+    )
+
+    privilege_number = models.PositiveIntegerField(
+        verbose_name='Номер документа',
+        null=True,
+        default=None,
+        blank=True,
+    )
+
     parents = models.ForeignKey(
         to=User,
         related_name='children',
